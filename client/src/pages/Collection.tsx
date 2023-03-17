@@ -1,5 +1,10 @@
-import React from "react";
+import Nav from "../components/Nav";
 
 export default function Collection() {
-  return <div>Collection</div>;
+  return (
+    <div>
+      <Nav />
+      Collection
+    </div>
+  );
 }
