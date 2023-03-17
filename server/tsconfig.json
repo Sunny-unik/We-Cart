@@ -1,0 +1,35 @@
+{
+  "compilerOptions": {
+    "target": "es6",
+    "module": "ESNext",
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "strict": true,
+    "noImplicitAny": true,
+    "strictNullChecks": true,
+    "strictFunctionTypes": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "noImplicitReturns": true,
+    "noFallthroughCasesInSwitch": true,
+    "rootDir": ".",
+    "outDir": "./dist",
+    "importHelpers": true,
+    "skipLibCheck": true,
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "experimentalDecorators": true,
+    "sourceMap": true,
+    "forceConsistentCasingInFileNames": true,
+    "baseUrl": ".",
+    "types": ["node", "jest"]
+  },
+  "ts-node": {
+    "esm": true
+  },
+  "ts-node-dev": {
+    "esm": true
+  },
+  "lib": ["ES6", "ES2020", "ES2021.String", "ESNext.AsyncIterable", "ESNext"],
+  "include": ["src/**/*.ts", "index.d.ts", "index.ts"]
+}
