@@ -1,10 +1,12 @@
 import Nav from "../components/Nav";
+import Footer from "../components/Footer";
 
 export default function Account() {
   return (
-    <div>
+    <>
       <Nav />
-      Account
-    </div>
+      <section style={{ minHeight: "63vh" }}>Account</section>
+      <Footer />
+    </>
   );
 }

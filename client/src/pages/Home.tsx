@@ -1,10 +1,12 @@
 import Nav from "../components/Nav";
+import Footer from "../components/Footer";
 
 export default function Home() {
   return (
-    <div>
+    <>
       <Nav />
-      Home
-    </div>
+      <section style={{ minHeight: "63vh" }}>Home</section>
+      <Footer />
+    </>
   );
 }

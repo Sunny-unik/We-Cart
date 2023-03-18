@@ -1,9 +1,11 @@
 import Nav from "../components/Nav";
+import Footer from "../components/Footer";
 
 export default function Product() {
   return (
-    <div>
-      <Nav /> Product
-    </div>
+    <>
+      <Nav /> <section style={{ minHeight: "63vh" }}>Product</section>
+      <Footer />
+    </>
   );
 }
