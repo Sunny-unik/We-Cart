@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "target": "es6",
+    "target": "ES6",
     "module": "ESNext",
     "moduleResolution": "node",
     "resolveJsonModule": true,
@@ -18,14 +18,12 @@
     "skipLibCheck": true,
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
-    "experimentalDecorators": true,
-    "sourceMap": true,
-    "forceConsistentCasingInFileNames": true,
     "baseUrl": ".",
-    "types": ["node", "jest"]
+    "types": ["node", "jest", "express"]
   },
   "ts-node": {
-    "esm": true
+    "esm": true,
+    "experimentalSpecifierResolution": "node"
   },
   "ts-node-dev": {
     "esm": true
