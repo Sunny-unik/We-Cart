@@ -16,7 +16,7 @@ export default function Error() {
       <h1>Oops! Something went wrong!</h1>
       <div className="text-center">
         <Link to="/" className="btn">
-          Return to Home
+          Return Home
         </Link>
       </div>
     </div>

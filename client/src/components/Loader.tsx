@@ -3,7 +3,7 @@ export default function Loader() {
     <>
       <div className="loading">Loading&#8230;</div>
       <div className="text-center content">
-        <h3>Content load soon, please be patience</h3>
+        <h3>Content will load soon, please be patient...</h3>
       </div>
     </>
   );
