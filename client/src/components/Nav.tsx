@@ -16,7 +16,7 @@ export default function Nav() {
                 <Link to="/collection">Products</Link>
               </li>
               <li>
-                <Link to="/account">Account</Link>
+                <Link to="/login">Login</Link>
               </li>
             </ul>
           </nav>
