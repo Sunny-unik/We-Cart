@@ -17,7 +17,7 @@ export default function Hero() {
             </a>
           </div>
           <div className="col-2">
-            <img src="images/image1.png" />
+            <img alt="hero product" src="images/image1.png" />
           </div>
         </div>
       </div>

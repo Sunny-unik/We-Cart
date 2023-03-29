@@ -15,6 +15,7 @@ export default function Footer() {
         <div className="row">
           <div className="footer-col-2nd">
             <img
+              alt="logo"
               src="http://localhost:3000/images/logo-white.png"
               style={{ cursor: "pointer" }}
               onClick={gotoHome}

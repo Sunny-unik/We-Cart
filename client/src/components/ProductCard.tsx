@@ -10,7 +10,7 @@ export default function ProductCard({
   return (
     <div className="col-4">
       <a href="html/product-details.html">
-        <img src={imageSource} />
+        <img alt="product" src={imageSource} />
       </a>
       <a href="html/product-details.html">
         <h4>{title}</h4>

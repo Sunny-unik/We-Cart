@@ -7,7 +7,7 @@ export default function Nav() {
         <div className="navbar">
           <div className="logo">
             <Link to="/">
-              <img src="/images/logo.png" width="125px" />
+              <img src="/images/logo.png" alt="logo" width="125px" />
             </Link>
           </div>
           <nav>
@@ -21,9 +21,9 @@ export default function Nav() {
             </ul>
           </nav>
           <Link to="/cart">
-            <img src="/images/cart.png" width="30px" height="30px" />
+            <img src="/images/cart.png" alt="cart" width="30px" height="30px" />
           </Link>
-          <img src="/images/menu.png" className="menu-icon" />
+          <img src="/images/menu.png" alt="menu" className="menu-icon" />
         </div>
       </div>
     </div>

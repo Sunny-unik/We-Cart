@@ -19,7 +19,7 @@ export default function TestimonialCard({
         <i className="fa fa-star-half-o"></i>
         <i className="fa fa-star-o"></i>
       </div>
-      <img src={imageSource} />
+      <img alt="selfie" src={imageSource} />
       <h3>{name}</h3>
     </div>
   );

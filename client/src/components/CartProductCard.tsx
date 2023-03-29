@@ -12,12 +12,12 @@ export default function CartProductCard({
       <tr>
         <td>
           <div className="cart-info">
-            <img src={imageSource} />
+            <img alt="cart product" src={imageSource} />
             <div>
               <p>{title}</p>
               <small>Price: ${price}</small>
               <br />
-              <a href="">Remove</a>
+              <a href="/cart">Remove</a>
             </div>
           </div>
         </td>

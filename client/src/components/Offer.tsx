@@ -4,7 +4,7 @@ export default function Offer() {
       <div className="small-container">
         <div className="row">
           <div className="col-2">
-            <img className="offer-img" src="images/exclusive.png" />
+            <img className="offer-img" alt="offer" src="images/exclusive.png" />
           </div>
           <div className="col-2">
             <p>Exclusively Available on RedStore</p>
@@ -13,7 +13,9 @@ export default function Offer() {
               The MI Smart Band 4 features a 39.9% larger(than Mi Band 3)AMOLED color full-touch
               display with adjustable brightness, so everything is clear as can be
             </small>
-            <a className="btn">Buy Now &#8594;</a>
+            <a href="/" className="btn">
+              Buy Now &#8594;
+            </a>
           </div>
         </div>
       </div>
