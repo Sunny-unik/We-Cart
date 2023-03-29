@@ -1,14 +1,17 @@
-import express, { Request, Response } from "express";
+import express from "express";
 import cors from "cors";
 import helmet from "helmet";
 import dotenv from "dotenv";
 import connectDb from "./db/mongoConnection";
+import userRouter from "./src/routes/userRoutes";
 
 const app = express();
 dotenv.config();
+const port = process.env.PORT;
 
 app.use(
   cors({
+    origin: process.env.ORIGIN,
     credentials: true
   })
 );
@@ -17,8 +20,6 @@ app.use(express.json());
 
 connectDb();
 
-app.get("/", (req: Request, res: Response) => {
-  res.send("Hello World! " + req);
-});
+app.use("/user", userRouter);
 
-app.listen(4000, () => console.log("app is live on http://localhost:4000"));
+app.listen(port, () => console.log("app is live on http://localhost:" + port));

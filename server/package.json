@@ -7,7 +7,7 @@
   "scripts": {
     "prestart": "npm run build",
     "start": "node --experimental-specifier-resolution=node dist/index.js",
-    "watchDev": "nodemon --exec ts-node ./index.ts",
+    "watch": "nodemon --exec ts-node ./index.ts",
     "build": "rimraf dist && tsc"
   },
   "repository": {
