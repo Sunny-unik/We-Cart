@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { useState } from "react";
+import validationHelper from "../helpers/validationHelper";
 
 export default function Register() {
   const [userInput, setUserInput] = useState({
@@ -16,7 +17,10 @@ export default function Register() {
   }
 
   function handleSubmit() {
-    console.log(userInput);
+    if (userInput.password !== userInput.confirmPassword) return alert("Passwords do not match");
+
+    const postData = { ...userInput, confirmPassword: undefined };
+    console.log(validationHelper.checkAll(postData));
   }
 
   return (
