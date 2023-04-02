@@ -14,8 +14,10 @@ const userSchema = new Schema({
     required: true
   },
   email: { type: String, minLength: 5, maxLength: 50, required: true },
-  profile: { type: String, default: "logo.png", required: false },
-  created: { type: Date, default: Date.now(), required: false }
+  profile: { type: String, default: "logo.png" },
+  created: { type: Date, default: Date.now() },
+  role: { type: String, enum: ["user", "admin"], default: "user" },
+  cartItems: { type: Array, default: [] }
 });
 
 export default mongoose.model("users", userSchema);

@@ -2,58 +2,19 @@ import Nav from "../components/Nav";
 import Footer from "../components/Footer";
 import ProductCard from "../components/ProductCard";
 import { Row, Row2, SmallContainer } from "../components/Layouts";
+import { useEffect, useState } from "react";
+import axios from "axios";
+import product from "../Interfaces/product";
 
 export default function Collection() {
-  const products = [
-    {
-      id: "1",
-      title: "Red Printed T-shirt",
-      imageName: "product-1.jpg",
-      price: "50.00"
-    },
-    {
-      id: "2",
-      title: "HRX Sneakers",
-      imageName: "product-2.jpg",
-      price: "125.00"
-    },
-    {
-      id: "3",
-      title: "Grey Trousers",
-      imageName: "product-3.jpg",
-      price: "75.00"
-    },
-    {
-      id: "4",
-      title: "Puma Blue T-Shirt",
-      imageName: "product-4.jpg",
-      price: "50.00"
-    },
-    {
-      id: "5",
-      title: "White Sneakers",
-      imageName: "product-5.jpg",
-      price: "100.00"
-    },
-    {
-      id: "6",
-      title: "Black T-Shirt by Puma",
-      imageName: "product-6.jpg",
-      price: "50.00"
-    },
-    {
-      id: "7",
-      title: "Ankle Socks by HRX",
-      imageName: "product-7.jpg",
-      price: "25.00"
-    },
-    {
-      id: "8",
-      title: "Matte Black Watch by Fossil",
-      imageName: "product-8.jpg",
-      price: "200.00"
-    }
-  ];
+  const [products, setproducts] = useState<product[] | []>([]);
+
+  useEffect(() => {
+    axios
+      .get(`${process.env.REACT_APP_API_URL}/product`)
+      .then((res) => setproducts(res.data.data))
+      .catch((err) => console.log(err));
+  }, [products]);
 
   return (
     <>
@@ -73,7 +34,7 @@ export default function Collection() {
 
         <Row>
           {products.map((product) => (
-            <ProductCard key={product.id} {...product} />
+            <ProductCard key={product._id} {...product} />
           ))}
         </Row>
 

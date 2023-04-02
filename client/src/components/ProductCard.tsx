@@ -9,7 +9,7 @@ export default function ProductCard({
 }: {
   title: string;
   imageName: string;
-  price: string;
+  price: number|string;
 }) {
   return (
     <Col4>
