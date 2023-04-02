@@ -1,10 +1,10 @@
 export default function CartProductCard({
   title,
-  imageSource,
+  imageName,
   price
 }: {
   title: string;
-  imageSource: string;
+  imageName: string;
   price: string;
 }) {
   return (
@@ -12,7 +12,7 @@ export default function CartProductCard({
       <tr>
         <td>
           <div className="cart-info">
-            <img alt="cart product" src={imageSource} />
+            <img alt="cart product" src={"images/" + imageName} loading="lazy" />
             <div>
               <p>{title}</p>
               <small>Price: ${price}</small>

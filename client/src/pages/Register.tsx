@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import { useState } from "react";
 import validationHelper from "../helpers/validationHelper";
 import { AccountContainer, LoginSignupDiv } from "../components/Layouts";
+import LogoButton from "../components/LogoButton";
 
 export default function Register() {
   const [userInput, setUserInput] = useState({
@@ -32,7 +33,9 @@ export default function Register() {
         <LoginSignupDiv>
           <div className="overlay"></div>
           <div className="content">
-            <div className="welcome">Hello There!</div>
+            <div className="welcome">
+              <LogoButton theme="dark" />
+            </div>
             <div className="subtitle">
               We're almost done. Before using our services you need to create an account.
             </div>

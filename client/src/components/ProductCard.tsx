@@ -4,17 +4,17 @@ import styled from "styled-components";
 
 export default function ProductCard({
   title,
-  imageSource,
+  imageName,
   price
 }: {
   title: string;
-  imageSource: string;
+  imageName: string;
   price: string;
 }) {
   return (
     <Col4>
       <Link to="/collection">
-        <img alt="product" src={imageSource} />
+        <img alt="product" src={"images/" + imageName} loading="lazy" />
         <H4>{title}</H4>
         <div className="rating">
           <i className="fa fa-star"></i>

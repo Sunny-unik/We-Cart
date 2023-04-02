@@ -8,49 +8,49 @@ export default function Collection() {
     {
       id: "1",
       title: "Red Printed T-shirt",
-      imageSource: "http://localhost:3000/images/product-1.jpg",
+      imageName: "product-1.jpg",
       price: "50.00"
     },
     {
       id: "2",
       title: "HRX Sneakers",
-      imageSource: "http://localhost:3000/images/product-2.jpg",
+      imageName: "product-2.jpg",
       price: "125.00"
     },
     {
       id: "3",
       title: "Grey Trousers",
-      imageSource: "http://localhost:3000/images/product-3.jpg",
+      imageName: "product-3.jpg",
       price: "75.00"
     },
     {
       id: "4",
       title: "Puma Blue T-Shirt",
-      imageSource: "http://localhost:3000/images/product-4.jpg",
+      imageName: "product-4.jpg",
       price: "50.00"
     },
     {
       id: "5",
       title: "White Sneakers",
-      imageSource: "http://localhost:3000/images/product-5.jpg",
+      imageName: "product-5.jpg",
       price: "100.00"
     },
     {
       id: "6",
       title: "Black T-Shirt by Puma",
-      imageSource: "http://localhost:3000/images/product-6.jpg",
+      imageName: "product-6.jpg",
       price: "50.00"
     },
     {
       id: "7",
       title: "Ankle Socks by HRX",
-      imageSource: "http://localhost:3000/images/product-7.jpg",
+      imageName: "product-7.jpg",
       price: "25.00"
     },
     {
       id: "8",
       title: "Matte Black Watch by Fossil",
-      imageSource: "http://localhost:3000/images/product-8.jpg",
+      imageName: "product-8.jpg",
       price: "200.00"
     }
   ];

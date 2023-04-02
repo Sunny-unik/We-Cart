@@ -1,12 +1,6 @@
 import { Col3 } from "./Layouts";
 
-export default function TestimonialCard({
-  name,
-  imageSource
-}: {
-  name: string;
-  imageSource: string;
-}) {
+export default function TestimonialCard({ name, imageName }: { name: string; imageName: string }) {
   return (
     <Col3>
       <i className="fa fa-quote-left"></i>
@@ -21,7 +15,7 @@ export default function TestimonialCard({
         <i className="fa fa-star-half-o"></i>
         <i className="fa fa-star-o"></i>
       </div>
-      <img alt="selfie" src={imageSource} />
+      <img alt="user profiles" src={"images/" + imageName} loading="lazy" />
       <h3>{name}</h3>
     </Col3>
   );

@@ -1,6 +1,7 @@
 import { ChangeEvent, useState } from "react";
 import { Link } from "react-router-dom";
 import { AccountContainer, LoginSignupDiv } from "../components/Layouts";
+import LogoButton from "../components/LogoButton";
 
 export default function Login() {
   const [userInput, setUserInput] = useState({ email: "", password: "" });
@@ -22,7 +23,9 @@ export default function Login() {
         <LoginSignupDiv>
           <div className="overlay"></div>
           <div className="content">
-            <div className="welcome">Hello There!</div>
+            <div className="welcome">
+              <LogoButton theme="dark" />
+            </div>
             <div className="subtitle">Welcome Back</div>
             <div className="input-fields">
               <input

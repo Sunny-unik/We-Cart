@@ -7,19 +7,19 @@ export default function Cart() {
   const cartItems = [
     {
       title: "Red Printed T-Shirt",
-      imageSource: "http://localhost:3000/images/buy-1.jpg",
+      imageName: "buy-1.jpg",
       price: "50.00",
       quantity: 1
     },
     {
       title: "Dark Green Sneakers by HRX",
-      imageSource: "http://localhost:3000/images/buy-2.jpg",
+      imageName: "buy-2.jpg",
       price: "125.00",
       quantity: 1
     },
     {
       title: "Grey Trousers by HRX",
-      imageSource: "http://localhost:3000/images/buy-3.jpg",
+      imageName: "buy-3.jpg",
       price: "75.00",
       quantity: 1
     }

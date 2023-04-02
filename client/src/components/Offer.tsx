@@ -8,7 +8,7 @@ export default function Offer() {
       <SmallContainer>
         <Row>
           <Col2>
-            <img className="offer-img" alt="offer" src="images/exclusive.png" />
+            <img className="offer-img" alt="offer" src="images/exclusive.png" loading="lazy" />
           </Col2>
           <Col2>
             <p>Exclusively Available on RedStore</p>

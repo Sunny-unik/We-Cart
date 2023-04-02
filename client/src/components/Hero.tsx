@@ -20,7 +20,7 @@ export default function Hero() {
             </Link>
           </Col2>
           <Col2>
-            <img alt="hero product" src="images/image1.png" />
+            <img alt="hero product" src="images/image1.png" loading="lazy" />
           </Col2>
         </Row>
       </Container>

@@ -1,55 +1,41 @@
 import { NavLink } from "react-router-dom";
 import styled from "styled-components";
 import { Container } from "./Layouts";
+import LogoButton from "./LogoButton";
 
 export default function Nav() {
+  const activeLinkHandler = ({ isActive }: { isActive: boolean }) => (isActive ? "active" : "");
+
   return (
     <div>
       <Container>
         <Navbar>
           <div className="logo">
-            <NavLink
-              className={({ isActive }) => {
-                return isActive ? "active" : " ";
-              }}
-              to="/"
-            >
-              <img src="/images/logo.png" alt="logo" width="125px" />
-            </NavLink>
+            <LogoButton theme="light" />
           </div>
           <nav>
             <ul id="menu-items">
               <li>
-                <NavLink
-                  className={({ isActive }) => {
-                    return isActive ? "active" : " ";
-                  }}
-                  to="/collection"
-                >
+                <NavLink className={activeLinkHandler} to="/collection">
                   Products
                 </NavLink>
               </li>
               <li>
-                <NavLink
-                  className={({ isActive }) => {
-                    return isActive ? "active" : " ";
-                  }}
-                  to="/login"
-                >
+                <NavLink className={activeLinkHandler} to="/login">
                   Login
+                </NavLink>
+              </li>
+              <li>
+                <NavLink className={activeLinkHandler} to="/register">
+                  Sign up
                 </NavLink>
               </li>
             </ul>
           </nav>
-          <NavLink
-            className={({ isActive }) => {
-              return isActive ? "active" : " ";
-            }}
-            to="/cart"
-          >
-            <img src="/images/cart.png" alt="cart" width="30px" height="30px" />
+          <NavLink className={activeLinkHandler} to="/cart">
+            <img src="images/cart.png" alt="cart" width="30px" height="30px" loading="lazy" />
           </NavLink>
-          <img src="/images/menu.png" alt="menu" className="menu-icon" />
+          <img src="images/menu.png" alt="menu" className="menu-icon" loading="lazy" />
         </Navbar>
       </Container>
     </div>

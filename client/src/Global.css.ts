@@ -14,8 +14,11 @@ export default createGlobalStyle`
     font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
   }
 
-  a{
+  a {
     text-decoration: none;
+    &:hover {
+      color: rgb(10, 88, 202);
+    }
   }
 
   * {

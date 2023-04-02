@@ -18,9 +18,10 @@ export default function Footer() {
           <div className="footer-col-2nd">
             <img
               alt="logo"
-              src="http://localhost:3000/images/logo-white.png"
+              src="images/logo-white.png"
               style={{ cursor: "pointer" }}
               onClick={gotoHome}
+              loading="lazy"
             />
             <p>
               Our Purpose is to Sustainably make the Pleasure and Benefits of Sports Accessible to

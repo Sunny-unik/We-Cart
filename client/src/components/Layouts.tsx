@@ -310,11 +310,11 @@ export const LoginSignupDiv = styled.div`
     margin-top: 25px;
   }
   .welcome {
-    font-weight: 200;
     margin-top: 75px;
+    margin-bottom: 5px;
     text-align: center;
-    font-size: 40px;
-    font-size: 2.5rem;
+    font-size: 46px;
+    font-size: 2.8rem;
     letter-spacing: 0px;
     letter-spacing: 0.05rem;
   }
