@@ -1,7 +1,9 @@
+import { Col5 } from "./Layouts";
+
 export default function BrandCard({ imageSource }: { imageSource: string }) {
   return (
-    <div className="col-5">
+    <Col5>
       <img alt="brand" src={imageSource} />
-    </div>
+    </Col5>
   );
 }

@@ -1,3 +1,5 @@
+import { Col3 } from "./Layouts";
+
 export default function TestimonialCard({
   name,
   imageSource
@@ -6,7 +8,7 @@ export default function TestimonialCard({
   imageSource: string;
 }) {
   return (
-    <div className="col-3">
+    <Col3>
       <i className="fa fa-quote-left"></i>
       <p>
         Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has
@@ -21,6 +23,6 @@ export default function TestimonialCard({
       </div>
       <img alt="selfie" src={imageSource} />
       <h3>{name}</h3>
-    </div>
+    </Col3>
   );
 }

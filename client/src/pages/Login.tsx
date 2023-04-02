@@ -1,26 +1,25 @@
 import { ChangeEvent, useState } from "react";
 import { Link } from "react-router-dom";
+import { AccountContainer, LoginSignupDiv } from "../components/Layouts";
+
 export default function Login() {
   const [userInput, setUserInput] = useState({ email: "", password: "" });
 
-  function handleChange(event: ChangeEvent) {
+  const handleChange = (event: ChangeEvent) =>
     setUserInput((nextInput) => {
       return {
         ...nextInput,
         [(event.target as HTMLInputElement).name]: (event.target as HTMLInputElement).value
       };
     });
-  }
 
-  function handleSubmit() {
-    console.log(userInput);
-  }
+  const handleSubmit = () => console.log(userInput);
 
   return (
     <>
       <div className="bold-line"></div>
-      <div className="door-container">
-        <div className="window">
+      <AccountContainer>
+        <LoginSignupDiv>
           <div className="overlay"></div>
           <div className="content">
             <div className="welcome">Hello There!</div>
@@ -59,8 +58,8 @@ export default function Login() {
               </span>
             </div>
           </div>
-        </div>
-      </div>
+        </LoginSignupDiv>
+      </AccountContainer>
     </>
   );
 }

@@ -6,10 +6,12 @@ import Product from "./pages/Product";
 import NotFound from "./pages/NotFound";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
+import GlobalStyle from "./Global.css";
 
 function App() {
   return (
     <div>
+      <GlobalStyle />
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Home />} />

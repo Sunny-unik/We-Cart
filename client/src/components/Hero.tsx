@@ -1,9 +1,12 @@
+import { Link } from "react-router-dom";
+import { Col2, Container, HeroGradient, Row } from "./Layouts";
+
 export default function Hero() {
   return (
-    <div className="header">
-      <div className="container">
-        <div className="row">
-          <div className="col-2">
+    <HeroGradient>
+      <Container>
+        <Row>
+          <Col2>
             <h1>
               Give Your workout <br /> A New Style!
             </h1>
@@ -12,15 +15,15 @@ export default function Hero() {
               <br />
               hard work gains success. Greatness will come.
             </p>
-            <a className="btn" href="html/products.html">
+            <Link className="btn" to="/collection">
               Explore Now &#10513;
-            </a>
-          </div>
-          <div className="col-2">
+            </Link>
+          </Col2>
+          <Col2>
             <img alt="hero product" src="images/image1.png" />
-          </div>
-        </div>
-      </div>
-    </div>
+          </Col2>
+        </Row>
+      </Container>
+    </HeroGradient>
   );
 }

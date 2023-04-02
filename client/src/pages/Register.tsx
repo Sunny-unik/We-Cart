@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { useState } from "react";
 import validationHelper from "../helpers/validationHelper";
+import { AccountContainer, LoginSignupDiv } from "../components/Layouts";
 
 export default function Register() {
   const [userInput, setUserInput] = useState({
@@ -10,24 +11,25 @@ export default function Register() {
     confirmPassword: ""
   });
 
-  function handleChange(event: any) {
+  const handleChange = (event: any) => {
     setUserInput((nextInput) => {
-      return { ...nextInput, [event.target.name]: event.target.value };
+      const target = event.target as HTMLInputElement;
+      return { ...nextInput, [target.name]: target.value };
     });
-  }
+  };
 
-  function handleSubmit() {
+  const handleSubmit = () => {
     if (userInput.password !== userInput.confirmPassword) return alert("Passwords do not match");
 
     const postData = { ...userInput, confirmPassword: undefined };
     console.log(validationHelper.checkAll(postData));
-  }
+  };
 
   return (
     <>
       <div className="bold-line"></div>
-      <div className="door-container">
-        <div className="window">
+      <AccountContainer>
+        <LoginSignupDiv>
           <div className="overlay"></div>
           <div className="content">
             <div className="welcome">Hello There!</div>
@@ -80,8 +82,8 @@ export default function Register() {
               </button>
             </div>
           </div>
-        </div>
-      </div>
+        </LoginSignupDiv>
+      </AccountContainer>
     </>
   );
 }

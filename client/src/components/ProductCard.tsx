@@ -1,3 +1,7 @@
+import { Link } from "react-router-dom";
+import { Col4 } from "./Layouts";
+import styled from "styled-components";
+
 export default function ProductCard({
   title,
   imageSource,
@@ -8,21 +12,24 @@ export default function ProductCard({
   price: string;
 }) {
   return (
-    <div className="col-4">
-      <a href="html/product-details.html">
+    <Col4>
+      <Link to="/collection">
         <img alt="product" src={imageSource} />
-      </a>
-      <a href="html/product-details.html">
-        <h4>{title}</h4>
-      </a>
-      <div className="rating">
-        <i className="fa fa-star"></i>
-        <i className="fa fa-star"></i>
-        <i className="fa fa-star"></i>
-        <i className="fa fa-star-half-o"></i>
-        <i className="fa fa-star-o"></i>
-      </div>
+        <H4>{title}</H4>
+        <div className="rating">
+          <i className="fa fa-star"></i>
+          <i className="fa fa-star"></i>
+          <i className="fa fa-star"></i>
+          <i className="fa fa-star-half-o"></i>
+          <i className="fa fa-star-o"></i>
+        </div>
+      </Link>
       <p>{price}</p>
-    </div>
+    </Col4>
   );
 }
+
+const H4 = styled.h4`
+  color: #555;
+  font-weight: normal;
+`;

@@ -1,4 +1,6 @@
 import { ReactNode } from "react";
+import { Row, SmallContainer } from "./Layouts";
+import styled from "styled-components";
 
 export default function ProductSection({
   children,
@@ -8,9 +10,28 @@ export default function ProductSection({
   title: String;
 }) {
   return (
-    <div className="small-container">
-      <h2 className="title">{title}</h2>
-      <div className="row">{children}</div>
-    </div>
+    <SmallContainer>
+      <Title>{title}</Title>
+      <Row>{children}</Row>
+    </SmallContainer>
   );
 }
+
+const Title = styled.h2`
+  text-align: center;
+  margin: 0 auto 80px;
+  position: relative;
+  line-height: 60px;
+  color: #555;
+  &:after {
+    content: "";
+    background-color: #ff523b;
+    height: 5px;
+    width: 80px;
+    border-radius: 5px;
+    position: absolute;
+    bottom: 0px;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+`;

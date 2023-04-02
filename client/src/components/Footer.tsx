@@ -1,4 +1,6 @@
 import { useNavigate } from "react-router-dom";
+import { Container, Row } from "./Layouts";
+import styled from "styled-components";
 
 export default function Footer() {
   const navigate = useNavigate();
@@ -10,9 +12,9 @@ export default function Footer() {
   };
 
   return (
-    <div className="footer">
-      <div className="container">
-        <div className="row">
+    <FooterDiv>
+      <Container>
+        <Row>
           <div className="footer-col-2nd">
             <img
               alt="logo"
@@ -43,10 +45,66 @@ export default function Footer() {
               <li>Youtube</li>
             </ul>
           </div>
-        </div>
+        </Row>
         <hr />
         <p className="copyright">Developed by We-Cart Team</p>
-      </div>
-    </div>
+      </Container>
+    </FooterDiv>
   );
 }
+
+const FooterDiv = styled.div`
+  background: #000;
+  color: #8a8a8a;
+  font-size: 14px;
+  padding: 20px 0 20px;
+  p {
+    color: #8a8a8a;
+  }
+  h3 {
+    color: #fff;
+    margin-bottom: 20px;
+  }
+  ul {
+    padding: 0px;
+  }
+  li {
+    cursor: pointer;
+  }
+  hr {
+    border: none;
+    background: #b5b5b5;
+    height: 1px;
+    margin: 20px 0;
+  }
+  .app-logo {
+    margin-top: 20px;
+    img {
+      width: 140px;
+    }
+  }
+  .copyright {
+    text-align: center;
+  }
+  .footer-col-1st,
+  .footer-col-2nd,
+  .footer-col-3rd,
+  .footer-col-4th {
+    min-width: 250px;
+    margin-bottom: 20px;
+  }
+  .footer-col-1st {
+    flex-basis: 30%;
+  }
+  .footer-col-2nd {
+    flex: 1;
+  }
+  .footer-col-2nd img {
+    width: 180px;
+    margin-bottom: 20px;
+  }
+  .footer-col-3rd,
+  .footer-col-4th {
+    flex-basis: 30%;
+  }
+`;

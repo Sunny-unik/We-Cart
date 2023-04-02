@@ -1,6 +1,7 @@
 import Nav from "../components/Nav";
 import Footer from "../components/Footer";
 import ProductCard from "../components/ProductCard";
+import { Row, Row2, SmallContainer } from "../components/Layouts";
 
 export default function Collection() {
   const products = [
@@ -58,8 +59,8 @@ export default function Collection() {
     <>
       <Nav />
 
-      <div className="small-container">
-        <div className="row row-2">
+      <SmallContainer>
+        <Row2 className="row">
           <h2>All Products</h2>
           <select>
             <option>Curated for you</option>
@@ -68,13 +69,13 @@ export default function Collection() {
             <option>Sort by Rating</option>
             <option>Sort by Sale</option>
           </select>
-        </div>
+        </Row2>
 
-        <div className="row">
+        <Row>
           {products.map((product) => (
             <ProductCard key={product.id} {...product} />
           ))}
-        </div>
+        </Row>
 
         <div className="page-btn">
           <span>1</span>
@@ -83,7 +84,7 @@ export default function Collection() {
           <span>4</span>
           <span>&#8594;</span>
         </div>
-      </div>
+      </SmallContainer>
 
       <Footer />
     </>

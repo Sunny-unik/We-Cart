@@ -1,6 +1,7 @@
 import Nav from "../components/Nav";
 import Footer from "../components/Footer";
 import CartProductCard from "../components/CartProductCard";
+import { SmallContainer } from "../components/Layouts";
 
 export default function Cart() {
   const cartItems = [
@@ -34,7 +35,7 @@ export default function Cart() {
     <>
       <Nav />
       <section style={{ minHeight: "63vh" }}>
-        <div className="small-container cart-page">
+        <SmallContainer className="cart-page">
           <table>
             <tbody>
               <tr>
@@ -66,9 +67,8 @@ export default function Cart() {
               </tbody>
             </table>
           </div>
-
           <button className="btn">Check Out</button>
-        </div>
+        </SmallContainer>
 
         <Footer />
       </section>
