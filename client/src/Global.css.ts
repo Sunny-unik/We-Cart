@@ -33,6 +33,10 @@ export default createGlobalStyle`
     width: 100%;
   }
 
+  .text-center{
+    text-align: center;
+  }
+
   .rating .fa {
     color: #ff523b;
   }

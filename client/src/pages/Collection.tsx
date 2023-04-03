@@ -4,16 +4,19 @@ import ProductCard from "../components/ProductCard";
 import { Row, Row2, SmallContainer } from "../components/Layouts";
 import { useEffect, useState } from "react";
 import axios from "axios";
-import product from "../Interfaces/product";
+import product, { error } from "../Interfaces/product";
+import { SkeletonCard } from "../components/Loader";
+import Error from "../components/Error";
 
 export default function Collection() {
-  const [products, setproducts] = useState<product[] | []>([]);
+  const [products, setproducts] = useState<product[] | undefined>();
+  const [error, seterror] = useState<error | undefined>();
 
   useEffect(() => {
     axios
       .get(`${process.env.REACT_APP_API_URL}/product`)
       .then((res) => setproducts(res.data.data))
-      .catch((err) => console.log(err));
+      .catch((err) => seterror(err));
   }, [products]);
 
   return (
@@ -33,9 +36,9 @@ export default function Collection() {
         </Row2>
 
         <Row>
-          {products.map((product) => (
-            <ProductCard key={product._id} {...product} />
-          ))}
+          {!error && !products && [0, 1, 2, 4].map(() => <SkeletonCard />)}
+          {error && <Error message={error.message} />}
+          {products && products.map((product) => <ProductCard key={product._id} {...product} />)}
         </Row>
 
         <div className="page-btn">

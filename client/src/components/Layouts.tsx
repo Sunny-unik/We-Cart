@@ -356,3 +356,8 @@ export const AccountContainer = styled.div`
   justify-content: center;
   align-items: center;
 `;
+
+export const H4 = styled.h4`
+  color: #555;
+  font-weight: normal;
+`;

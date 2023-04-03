@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 
-export default function Error() {
+export default function Error({ message }: { message?: string }) {
   return (
     <ErrorDiv className="errorWrapper">
       <Face>
@@ -14,7 +14,8 @@ export default function Error() {
         <div className="dimples"></div>
         <div className="mouth"></div>
       </Face>
-      <h1>Oops! Something went wrong!</h1>
+      <h1>{message ? message : "Oops! Something went wrong!"}</h1>
+      <br />
       <div className="text-center">
         <Link to="/" className="btn">
           Return Home

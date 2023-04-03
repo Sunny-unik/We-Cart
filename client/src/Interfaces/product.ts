@@ -5,3 +5,7 @@ export default interface product {
   price: number;
   rating: number;
 }
+
+export interface error {
+  message: string;
+}

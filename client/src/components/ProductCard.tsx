@@ -1,6 +1,5 @@
 import { Link } from "react-router-dom";
-import { Col4 } from "./Layouts";
-import styled from "styled-components";
+import { Col4, H4 } from "./Layouts";
 
 export default function ProductCard({
   title,
@@ -9,7 +8,7 @@ export default function ProductCard({
 }: {
   title: string;
   imageName: string;
-  price: number|string;
+  price: number | string;
 }) {
   return (
     <Col4>
@@ -28,8 +27,3 @@ export default function ProductCard({
     </Col4>
   );
 }
-
-const H4 = styled.h4`
-  color: #555;
-  font-weight: normal;
-`;
