@@ -6,7 +6,7 @@ export default class ProductController {
   static async getProducts(req: Request, res: Response) {
     await productSchema
       .find()
-      .select(req.body.query ? req.body.query : "_id title rating price imageName")
+      .select(req.body.query ? req.body.query : "_id title rating price imageName category segment")
       .then((products: productType[]) => res.json({ total: products.length, data: products }))
       .catch((err: Error) => console.log(err));
   }

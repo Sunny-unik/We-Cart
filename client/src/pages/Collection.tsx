@@ -17,7 +17,7 @@ export default function Collection() {
       .get(`${process.env.REACT_APP_API_URL}/product`)
       .then((res) => setproducts(res.data.data))
       .catch((err) => seterror(err));
-  }, [products]);
+  }, []);
 
   return (
     <>
@@ -36,8 +36,8 @@ export default function Collection() {
         </Row2>
 
         <Row>
-          {!error && !products && [0, 1, 2, 4].map(() => <SkeletonCard />)}
-          {error && <Error message={error.message} />}
+          {!error && !products && [0, 1, 2, 4].map((dummy) => <SkeletonCard key={dummy} />)}
+          {!products && error && <Error message={error.message} />}
           {products && products.map((product) => <ProductCard key={product._id} {...product} />)}
         </Row>
 

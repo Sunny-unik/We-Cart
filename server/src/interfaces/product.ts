@@ -6,4 +6,6 @@ export default interface product {
   imageName: string;
   price: number;
   rating: number;
+  category: string;
+  segment: string;
 }

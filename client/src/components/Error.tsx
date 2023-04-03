@@ -1,4 +1,3 @@
-import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 export default function Error({ message }: { message?: string }) {
@@ -17,9 +16,9 @@ export default function Error({ message }: { message?: string }) {
       <h1>{message ? message : "Oops! Something went wrong!"}</h1>
       <br />
       <div className="text-center">
-        <Link to="/" className="btn">
+        <button className="btn" onClick={() => (window.location.pathname = "/")}>
           Return Home
-        </Link>
+        </button>
       </div>
     </ErrorDiv>
   );

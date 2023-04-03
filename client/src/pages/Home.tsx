@@ -8,29 +8,13 @@ import TestimonialCard from "../components/TestimonialCard";
 import TestimonialSection from "../components/TestimonialSection";
 import BrandSection from "../components/BrandSection";
 import BrandCard from "../components/BrandCard";
+import { useEffect, useState } from "react";
+import axios from "axios";
+import product, { error } from "../Interfaces/product";
+import Error from "../components/Error";
+import { SkeletonCard } from "../components/Loader";
 
 export default function Home() {
-  const featuredProducts = [
-    { title: "Red Printed T-shirt", imageName: "product-1.jpg", price: "$50.00" },
-    { title: "HRX Sneakers", imageName: "product-2.jpg", price: "$50.00" },
-    { title: "Grey Trousers", imageName: "product-3.jpg", price: "$50.00" },
-    { title: "Puma Blue T-Shirt", imageName: "product-4.jpg", price: "$50.00" }
-  ];
-  const latestProducts = [
-    { title: "Grey Sneakers", imageName: "product-5.jpg", price: "$50.00" },
-    { title: "Puma Black T-Shirt", imageName: "product-6.jpg", price: "$50.00" },
-    { title: "HRX Socks", imageName: "product-7.jpg", price: "$50.00" },
-    { title: "Fossil Matte Black Watch", imageName: "product-8.jpg", price: "$50.00" },
-    { title: "Black Leather Watch", imageName: "product-9.jpg", price: "$50.00" },
-    { title: "HRX Sports Shoes", imageName: "product-10.jpg", price: "$50.00" },
-    { title: "Grey Jogging Shoes", imageName: "product-11.jpg", price: "$50.00" },
-    { title: "Nike Trousers", imageName: "product-12.jpg", price: "$50.00" }
-  ];
-  const testimonials = [
-    { name: "Santra Devi", imageName: "user-1.png" },
-    { name: "Ramfal Jaat", imageName: "user-2.png" },
-    { name: "Rampyari", imageName: "user-3.png" }
-  ];
   const brands = [
     { imageName: "logo-godrej.png" },
     { imageName: "logo-oppo.png" },
@@ -38,6 +22,20 @@ export default function Home() {
     { imageName: "logo-paypal.png" },
     { imageName: "logo-philips.png" }
   ];
+  const testimonials = [
+    { name: "Santra Devi", imageName: "user-1.png" },
+    { name: "Ramfal Jaat", imageName: "user-2.png" },
+    { name: "Rampyari", imageName: "user-3.png" }
+  ];
+  const [products, setproducts] = useState<product[] | undefined>();
+  const [error, seterror] = useState<error | undefined>();
+
+  useEffect(() => {
+    axios
+      .get(`${process.env.REACT_APP_API_URL}/product`)
+      .then((res) => setproducts(res.data.data))
+      .catch((err) => seterror(err));
+  }, []);
 
   return (
     <>
@@ -48,15 +46,18 @@ export default function Home() {
       </section>
 
       <ProductSection title={"Featured Products"}>
-        {featuredProducts.map((product, i) => (
-          <ProductCard key={i} {...product} />
-        ))}
+        {!error && !products && [0, 1, 2, 4].map((dummy) => <SkeletonCard key={dummy} />)}
+        {!products && error && <Error message={error.message} />}
+        {products &&
+          products
+            .filter((product) => product.segment === "featured")
+            .map((product) => <ProductCard key={product._id} {...product} />)}
       </ProductSection>
 
       <ProductSection title={"Latest Products"}>
-        {latestProducts.map((product, i) => (
-          <ProductCard key={i} {...product} />
-        ))}
+        {!error && !products && [0, 1, 2, 4].map((dummy) => <SkeletonCard key={dummy} />)}
+        {!products && error && <Error message={error.message} />}
+        {products && products.map((product) => <ProductCard key={product._id} {...product} />)}
       </ProductSection>
 
       <Offer />
