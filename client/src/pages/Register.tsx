@@ -1,31 +1,41 @@
 import { Link, useNavigate } from "react-router-dom";
 import { useState, useRef, FormEvent } from "react";
-import validationHelper from "../helpers/validationHelper";
+import validationHelper, { registerUserInterface } from "../helpers/validationHelper";
 import { AccountContainer, LoginSignupDiv } from "../components/Layouts";
 import LogoButton from "../components/LogoButton";
 import ConfirmOtp from "../components/ConfirmOtp";
+import PasswordInput from "../components/PasswordInput";
 
 export default function Register() {
   const [activeForm, setactiveForm] = useState<"register" | "verification">("register");
-  const nameInput = useRef<HTMLInputElement>(null);
-  const emailInput = useRef<HTMLInputElement>(null);
-  const passwordInput = useRef<HTMLInputElement>(null);
-  const confirmPasswordInput = useRef<HTMLInputElement>(null);
+  const formRef = useRef<HTMLFormElement>(null);
   const navigate = useNavigate();
 
   const handleChange = ({ target }: { target: HTMLInputElement }) => console.log(target.value);
 
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    if (passwordInput.current!.value !== confirmPasswordInput.current!.value)
-      return alert("Passwords do not match");
 
-    const validationReport = validationHelper.checkAll({
-      name: nameInput.current!.value,
-      email: emailInput.current!.value,
-      password: passwordInput.current!.value
-    });
-    validationReport[0] ? setactiveForm("verification") : console.log(validationReport);
+    const validUserData = validateUser();
+
+    if (validUserData) {
+      console.log(validUserData);
+      setactiveForm("verification");
+    }
+  };
+
+  const validateUser = () => {
+    const formData = new FormData(formRef.current!);
+    const userData = {
+      name: formData.get("name"),
+      email: formData.get("email"),
+      password: formData.get("password"),
+      confirmPassword: formData.get("confirmPassword")
+    };
+
+    const validationReport = validationHelper.checkAll(userData as registerUserInterface);
+
+    return !validationReport.status ? alert(validationReport.message) : userData;
   };
 
   return (
@@ -42,32 +52,35 @@ export default function Register() {
               We're almost done. Before using our services you need to create an account.
             </div>
             {activeForm === "register" ? (
-              <form onSubmit={handleSubmit}>
+              <form ref={formRef} onSubmit={handleSubmit}>
                 <div className="input-fields">
                   <input
                     type="text"
-                    ref={nameInput}
+                    name="name"
+                    autoFocus
+                    required
+                    minLength={2}
+                    maxLength={55}
                     onChange={handleChange}
                     placeholder="Name"
                     className="input-line full-width"
                   />
                   <input
                     type="email"
-                    ref={emailInput}
+                    name="email"
+                    required
                     onChange={handleChange}
                     placeholder="Email"
                     className="input-line full-width"
                   />
-                  <input
-                    type="password"
-                    ref={passwordInput}
+                  <PasswordInput
+                    name="password"
                     onChange={handleChange}
                     placeholder="Password"
                     className="input-line full-width"
                   />
-                  <input
-                    type="password"
-                    ref={confirmPasswordInput}
+                  <PasswordInput
+                    name="confirmPassword"
                     onChange={handleChange}
                     placeholder="Confirm Password"
                     className="input-line full-width"
@@ -79,9 +92,7 @@ export default function Register() {
                     <Link to="/login">Login</Link>
                   </span>
                 </div>
-                <div>
-                  <button className="ghost-round full-width">Create Account</button>
-                </div>
+                <button className="ghost-round full-width">Create Account</button>
               </form>
             ) : (
               <ConfirmOtp

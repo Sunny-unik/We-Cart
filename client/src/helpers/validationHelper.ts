@@ -1,51 +1,79 @@
 /* eslint-disable no-useless-escape */
-import User from "../Interfaces/user";
 
-type validStatusType = [boolean, string];
+export interface validStatusInterface {
+  status: boolean;
+  message: string;
+}
+
+export interface registerUserInterface {
+  name: string;
+  email: string;
+  password: string;
+  confirmPassword: string;
+}
 
 export default class userValidation {
   static checkAll({
     name,
     email,
-    password
-  }: Pick<User, "name" | "email" | "password">): validStatusType {
+    password,
+    confirmPassword
+  }: registerUserInterface): validStatusInterface {
     const errors: string[] = [];
-    const { checkUsername, checkEmail, checkPassword } = userValidation;
-    const validationStatus = [checkUsername(name), checkEmail(email), checkPassword(password)];
+    const { checkName, checkEmail, checkPassword, comparePasswords } = userValidation;
+    const validationStatus = [
+      checkName(name),
+      checkEmail(email),
+      checkPassword(password),
+      comparePasswords(password, confirmPassword)
+    ];
 
-    validationStatus.forEach(([status, err]) => !status && errors.push(err));
+    validationStatus.forEach(({ status, message }) => !status && errors.push(message));
 
-    return errors.length ? [false, errors.join(",\n")] : [true, "valid"];
+    return errors.length
+      ? { status: false, message: errors.join(",\n") }
+      : { status: true, message: "" };
   }
 
-  static checkUsername(name: string): validStatusType {
-    if (!name.trim() || name.trim().length <= 2 || name.trim().length >= 55)
-      return [false, "please enter your name"];
+  static checkName(name: string): validStatusInterface {
+    const nameRegex = /^([a-zA-Z ]){2,55}$/;
 
-    return [true, "valid"];
+    if (!nameRegex.test(name))
+      return {
+        status: false,
+        message: "Name length must in between 1 to 56 and do not contain any special characters"
+      };
+
+    return { status: true, message: "" };
   }
 
-  static checkEmail(email: string): validStatusType {
-    const emailRegex = new RegExp(
-      /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
-    );
+  static checkEmail(email: string): validStatusInterface {
+    const emailRegex =
+      /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
-    if (!emailRegex.test(email)) return [false, "Email is not valid"];
+    if (!email.trim().length) return { status: false, message: "Email is required" };
+    if (!emailRegex.test(email)) return { status: false, message: "Email is not valid" };
 
-    return [true, "valid"];
+    return { status: true, message: "" };
   }
 
-  static checkPassword(password: string): validStatusType {
-    const passwordRegex = new RegExp(
-      /(?=(.*[0-9]))(?=.*[\!@#$%^&*()\\[\]{}\-_+=~`|:;"'<>,./?])(?=.*[a-z])(?=(.*[A-Z]))(?=(.*)).{8,}/
-    );
+  static checkPassword(password: string): validStatusInterface {
+    const passwordRegex =
+      /(?=(.*[0-9]))(?=.*[\!@#$%^&*()\\[\]{}\-_+=~`|:;"'<>,./?])(?=.*[a-z])(?=(.*[A-Z]))(?=(.*)).{8,}/;
 
-    if (!passwordRegex.test(password) || password.length > 16)
-      return [
-        false,
-        "Password should have 1 lowercase letter, 1 uppercase letter, 1 number, 1 special character and number of letters must in between 8 to 16"
-      ];
+    if (!passwordRegex.test(password))
+      return {
+        status: false,
+        message:
+          "Password should have 1 lowercase letter, 1 uppercase letter, 1 number, 1 special character and number of letters must in between 8 to 16"
+      };
 
-    return [true, "valid"];
+    return { status: true, message: "" };
+  }
+
+  static comparePasswords(password: string, confirmPassword: string): validStatusInterface {
+    if (password !== confirmPassword) return { status: false, message: "Passwords do not match" };
+
+    return { status: true, message: "" };
   }
 }

@@ -1,26 +1,55 @@
 import { useState, useRef, FormEvent } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { AccountContainer, LoginSignupDiv } from "../components/Layouts";
 import LogoButton from "../components/LogoButton";
 import SetPassword from "../components/SetPassword";
 import ConfirmOtp from "../components/ConfirmOtp";
+import userValidation from "../helpers/validationHelper";
+import PasswordInput from "../components/PasswordInput";
 
 export default function Login() {
   const [activeForm, setactiveForm] = useState<"login" | "forgotPassword" | "setPassword">("login");
-  const emailInput = useRef<HTMLInputElement>(null);
-  const passwordInput = useRef<HTMLInputElement>(null);
+  const emailRef = useRef<HTMLInputElement>(null);
+  const passwordRef = useRef<HTMLInputElement>(null);
+  const navigate = useNavigate();
 
   const handleChange = ({ target }: { target: HTMLInputElement }) => console.log(target.value);
 
-  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    console.log({
-      email: emailInput.current!.value,
-      password: passwordInput.current!.value
-    });
+  const handleSubmit = (e?: FormEvent<HTMLFormElement>) => {
+    e?.preventDefault();
+
+    const validUserData = validateUser();
+
+    if (validUserData) {
+      console.log(validUserData);
+      navigate("/");
+    }
   };
 
-  const handleForgotClick = () => setactiveForm("forgotPassword");
+  const validateUser = () => {
+    const [emailInput, passwordInput] = [emailRef.current!, passwordRef.current!];
+    const userData = {
+      email: emailInput.value,
+      password: passwordInput.value
+    };
+    const errors: string[] = [];
+    const [emailReport, passwordReport] = [
+      userValidation.checkEmail(userData.email),
+      userValidation.checkPassword(userData.password)
+    ];
+
+    !emailReport.status && errors.push(emailReport.message);
+    !passwordReport.status && errors.push(passwordReport.message);
+
+    return errors.length ? alert(errors.join(",\n")) : userData;
+  };
+
+  const handleForgotClick = () => {
+    const validateEmail = userValidation.checkEmail(emailRef.current!.value);
+    if (!validateEmail.status) return alert(validateEmail.message);
+
+    setactiveForm("forgotPassword");
+  };
 
   return (
     <>
@@ -38,14 +67,15 @@ export default function Login() {
                 <div className="input-fields">
                   <input
                     type="email"
-                    ref={emailInput}
+                    ref={emailRef}
                     onChange={handleChange}
+                    required
+                    autoFocus
                     placeholder="Email"
                     className="input-line full-width"
                   />
-                  <input
-                    type="password"
-                    ref={passwordInput}
+                  <PasswordInput
+                    ref={passwordRef}
                     onChange={handleChange}
                     placeholder="Password"
                     className="input-line full-width"

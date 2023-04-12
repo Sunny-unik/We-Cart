@@ -66,7 +66,7 @@ export const Col4 = styled.div`
   img {
     width: 100%;
   }
-  &:hover {
+  :hover {
     transform: translateY(-5px);
   }
   @media only screen and (max-width: 600px) {
@@ -360,4 +360,14 @@ export const AccountContainer = styled.div`
 export const H4 = styled.h4`
   color: #555;
   font-weight: normal;
+`;
+
+export const PasswordToggleBtn = styled.span`
+  float: right;
+  position: relative;
+  top: -40px;
+  right: 5px;
+  :hover {
+    cursor: pointer;
+  }
 `;
