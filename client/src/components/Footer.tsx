@@ -15,7 +15,7 @@ export default function Footer() {
     <FooterDiv>
       <Container>
         <Row>
-          <div className="footer-col-2nd">
+          <div className="footer-col-1st">
             <img
               alt="logo"
               src="images/logo-white.png"
@@ -28,7 +28,7 @@ export default function Footer() {
               as the Many
             </p>
           </div>
-          <div className="footer-col-3rd">
+          <div className="footer-col-2nd">
             <h3>Useful Links</h3>
             <ul>
               <li>Coupons</li>
@@ -37,7 +37,7 @@ export default function Footer() {
               <li>Join Affiliate</li>
             </ul>
           </div>
-          <div className="footer-col-4th">
+          <div className="footer-col-3rd">
             <h3>Connect With Us on</h3>
             <ul>
               <li>Facebook</li>
@@ -89,8 +89,7 @@ const FooterDiv = styled.div`
   }
   .footer-col-1st,
   .footer-col-2nd,
-  .footer-col-3rd,
-  .footer-col-4th {
+  .footer-col-3rd {
     min-width: 250px;
     margin-bottom: 20px;
   }
@@ -98,14 +97,13 @@ const FooterDiv = styled.div`
     flex-basis: 30%;
   }
   .footer-col-2nd {
-    flex: 1;
+    flex-basis: 30%;
   }
   .footer-col-2nd img {
     width: 180px;
     margin-bottom: 20px;
   }
-  .footer-col-3rd,
-  .footer-col-4th {
+  .footer-col-3rd {
     flex-basis: 30%;
   }
 `;
